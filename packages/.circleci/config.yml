@@ -46,3 +46,13 @@ jobs:
                 key: goodreads-v2-{{ .Revision }}
                 paths:
                   - packages/goodreads/build
+workflows:
+    build-components-and-app:
+      jobs:
+        - build-and-test-components
+        - test-goodreads:
+            requires:
+              - build-and-test-components
+        - build-goodreads:
+            requires:
+              - build-and-test-components
