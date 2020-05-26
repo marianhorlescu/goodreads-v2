@@ -38,7 +38,8 @@
     "test:goodreads": "lerna exec npm test --scope=@goodreads-v2/goodreads",
     "test:goodreads:cov": "lerna exec npm run test:coverage --scope=@goodreads-v2/goodreads",
     "cypress:start": "lerna exec cypress open --scope=@goodreads-v2/goodreads",
-    "cypress:run": "lerna exec cypress run --scope=@goodreads-v2/goodreads"
+    "cypress:run": "lerna exec cypress run --scope=@goodreads-v2/goodreads",
+    "build:goodreads": "lerna exec npm run build --scope=@goodreads-v2/goodreads"
   },
   "repository": {
     "type": "git",
