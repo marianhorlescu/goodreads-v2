@@ -26,13 +26,19 @@
     "build-storybook": "lerna exec npm run build-storybook --scope=@goodreads-v2/component-library",
     "start:app": "lerna exec npm start --scope=@goodreads-v2/goodreads",
     "start:server": "lerna exec npm run server:dev --scope=jungle-jim",
+    "start:server:test": "lerna exec npm run server:test --scope=jungle-jim",
+    "start:goodreads:test": "npm-run-all --parallel start:server:test start:app",
     "start:goodreads": "npm-run-all --parallel start:server start:app",
     "clean:package-locks": "find . -type f -name 'package-lock.json' -exec rm {} +",
     "clean:lerna": "lerna clean",
     "clean:root-modules": "rm -rf node_modules",
     "clean": "npm-run-all clean:lerna clean:root-modules clean:package-locks",
     "bootstrap": "npm i && lerna bootstrap",
-    "test:components": "lerna exec npm test --scope=@goodreads-v2/component-library"
+    "test:components": "lerna exec npm test --scope=@goodreads-v2/component-library",
+    "test:goodreads": "lerna exec npm test --scope=@goodreads-v2/goodreads",
+    "test:goodreads:cov": "lerna exec npm run test:coverage --scope=@goodreads-v2/goodreads",
+    "cypress:start": "lerna exec cypress open --scope=@goodreads-v2/goodreads",
+    "cypress:run": "lerna exec cypress run --scope=@goodreads-v2/goodreads"
   },
   "repository": {
     "type": "git",

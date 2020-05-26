@@ -6,17 +6,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import App from '../components/app'
 import DashboardLogin from '../components/login'
 import DashboardRegister from '../components/register'
+import AuthCheck from '../containers/auth-checker'
 
 const Routes = ({ store }) => (
   <Provider store={store}>
     <Router>
       <Fragment>
         <Switch>
-          <Route exact path="/" render={(props) => <App {...props} />} />
+          <Route exact path="/" render={(props) => <AuthCheck><App {...props} /></AuthCheck>} />
           <Route
             exact
             path="/login"
-            render={(props) => <DashboardLogin {...props} />}
+            render={(props) => <AuthCheck><DashboardLogin {...props} /></AuthCheck>}
           />
           <Route
             exact

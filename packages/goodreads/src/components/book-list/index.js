@@ -6,6 +6,7 @@ import {
   fetchRatings,
   fetchBooksInProgress,
 } from './actions'
+import { getBooks } from './selectors'
 import { connect } from 'react-redux'
 import { components } from '@goodreads-v2/component-library'
 
@@ -30,12 +31,8 @@ class BookList extends Component {
   }
 
   render() {
-    const { meta, images, ratings, authenticated } = this.props
-    const books = meta.map((bookMeta, idx) => ({
-      ...bookMeta,
-      ...images[idx],
-      ...ratings[idx],
-    }))
+    const { books, authenticated } = this.props
+
     return (
       <BookGrid>
         {books.map((book) => (
@@ -51,9 +48,9 @@ class BookList extends Component {
 }
 
 function mapStateToProps(state) {
-  const { meta, images, ratings } = state.books
   const authenticated = false
-  return { meta, images, ratings, authenticated }
+  const books = getBooks(state);
+  return { books, authenticated }
 }
 
 export default connect(mapStateToProps)(BookList)
